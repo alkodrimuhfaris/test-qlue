@@ -62,10 +62,10 @@ export default function SearchMap() {
             </form>
           </div>
           <div className="suggestions">
-            {loading && <div>Loading...</div>}
+            {loading && <div className="px-4">Loading...</div>}
             {suggestions.map((suggestion) => {
               const style = suggestion.active
-                ? {backgroundColor: '#fafafa', cursor: 'pointer'}
+                ? {backgroundColor: '#e9f1fc', cursor: 'pointer'}
                 : {backgroundColor: '#ffffff', cursor: 'pointer'};
               return (
                 <div

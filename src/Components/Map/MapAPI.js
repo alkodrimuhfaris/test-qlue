@@ -12,7 +12,7 @@ export default function MapAPI() {
   const {marker, address} = useSelector((state) => state.map);
 
   const MapComponent = withScriptjs(
-    withGoogleMap((props) => (
+    withGoogleMap((_props) => (
       <GoogleMap defaultZoom={15} defaultCenter={marker}>
         <Marker position={marker}>
           <InfoWindow position={marker}>

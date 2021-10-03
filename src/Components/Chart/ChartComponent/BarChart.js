@@ -13,8 +13,6 @@ export default function BarChart({data = []}) {
     x.data = data;
     x.legend = new am4charts.Legend();
     x.cursor = new am4charts.XYCursor();
-    x.scrollbarX = new am4core.Scrollbar();
-    x.scrollbarY = new am4core.Scrollbar();
     // Create axes
     const dateAxis = x.xAxes.push(new am4charts.DateAxis());
     dateAxis.dataFields.category = 'date';

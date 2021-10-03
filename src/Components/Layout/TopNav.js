@@ -10,7 +10,7 @@ export default function TopNav({hover}) {
   const route = getRoute(pathname);
   return (
     <div className={`top-nav ${hover ? 'hover' : ''}`}>
-      <div className="container d-flex h-100">
+      <div className="container d-flex h-100 top-nav-cont">
         {route.title !== 'Map' ? (
           <SearchInput
             search={route.searchVal}
