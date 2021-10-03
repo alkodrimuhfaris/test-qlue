@@ -12,7 +12,7 @@ export default function ChartTable() {
     error,
   } = useSelector((state) => state.chart);
   return (
-    <div className="table-container">
+    <div className="table-container rounded shadow">
       <div className="table-inside">
         <TableHead />
         {data.length && success ? (

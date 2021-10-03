@@ -43,10 +43,15 @@ body {
     border-radius: 20px; /* roundness of the scroll thumb */
     border: 1.5px solid #fff;
   }
-  .testing {
-    height: 1000px;
-    background-color: #fff;
+}
+
+.hide-scroll {
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
   }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 body:not(.modal-open) {
@@ -339,15 +344,20 @@ body:not(.modal-open) {
 
 .table {
   margin: 0 !important;
-  padding: 0.5rem 0rem;
+  padding: 0.5rem 0.5rem;
   height: 100%;
   & .table-container {
     width: 100%;
     height: calc(100% - 4rem);
     overflow: auto;
-    padding: 0rem 0.5rem 0.5rem 0.5rem;
+    padding: 0rem 1rem 1rem 1rem;
     background-color: #fff;
-    @extend .scroll-stylized;
+    .stylized-scroll & {
+      @extend .scroll-stylized;
+    }
+    .scroll-hide & {
+      @extend .hide-scroll;
+    }
   }
 }
 

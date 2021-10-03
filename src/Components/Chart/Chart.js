@@ -82,7 +82,7 @@ export default function Chart() {
   return (
     <div className="chart-wrapper">
       <div className="chart-inside no-gutters">
-        <div className="cov-table">
+        <div className="cov-table scroll-hide">
           <TableChart />
         </div>
         <div className="cov-chart">
