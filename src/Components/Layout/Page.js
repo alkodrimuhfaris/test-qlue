@@ -4,12 +4,10 @@ import {useHistory} from 'react-router-dom';
 import paginationFunction from '../../Helpers/paginationEngine';
 import TriangleIcon from '../ComponentLayout/TriangleIcon';
 
-export default function Page({question}) {
+export default function Page() {
   const history = useHistory();
   const [pages, setPages] = React.useState([1, 2, 3, 4, 5]);
-  const {page: currentPage, search, maxPage} = useSelector((state) =>
-    question === 'one' ? state.question1 : state.question2,
-  );
+  const {currentPage, search, maxPage} = useSelector((state) => state.table);
   const [prevElipsis, setPrevElipsis] = React.useState(false);
   const [nextElipsis, setNextElipsis] = React.useState(false);
 
@@ -32,7 +30,7 @@ export default function Page({question}) {
           className="pagination-item"
           onClick={() =>
             history.push(
-              search && question === 'two'
+              search
                 ? {
                     search: `?page=${currentPage - 1}&search=${search}`,
                   }
@@ -64,7 +62,7 @@ export default function Page({question}) {
             className="pagination-item"
             onClick={() =>
               history.push(
-                search && question === 'two'
+                search
                   ? {
                       search: `?page=${val}&search=${search}`,
                     }
@@ -94,7 +92,7 @@ export default function Page({question}) {
           className="pagination-item"
           onClick={() =>
             history.push(
-              search && question === 'two'
+              search
                 ? {
                     search: `?page=${currentPage + 1}&search=${search}`,
                   }

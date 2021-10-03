@@ -1,5 +1,5 @@
-import pokemon from './pokemon';
+import api from './apis';
 
 export default {
-  pokemon,
+  api,
 };

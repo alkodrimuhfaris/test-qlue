@@ -1,14 +1,17 @@
 import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import actions from '../../redux/actions';
 import SearchInput from './SearchInput';
 
 export default function TopNav({hover}) {
-  const [search, setSeearch] = React.useState('');
+  const {search} = useSelector((state) => state.table);
+  const dispatch = useDispatch();
   return (
     <div className={`top-nav ${hover ? 'hover' : ''}`}>
       <div className="container h-100">
         <SearchInput
           search={search}
-          setSearch={(e) => setSeearch(e.target.value)}
+          setSearch={(e) => dispatch(actions.api.rickSearch(e.target.value))}
         />
       </div>
     </div>
