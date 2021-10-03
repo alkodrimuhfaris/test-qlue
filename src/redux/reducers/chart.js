@@ -27,14 +27,7 @@ const initialState = {
     meninggal: 142115,
     dirawat: 33812,
   },
-  selectedData: {
-    fid: 11,
-    kodeProvinsi: 31,
-    provinsi: 'DKI Jakarta',
-    positif: 406205,
-    sembuh: 393166,
-    meninggal: 6625,
-  },
+  selectedData: null,
 };
 
 export default (state = initialState, action) => {
@@ -93,6 +86,7 @@ export default (state = initialState, action) => {
         pending: false,
         error: false,
 
+        selectedData: newData.length ? newData[0] : null,
         maxPage,
         rawData: newData,
         data,
@@ -105,7 +99,7 @@ export default (state = initialState, action) => {
       const selectedData = {
         fid: null,
         kodeProvinsi: null,
-        provinsi: null,
+        name: null,
         positif: null,
         sembuh: null,
         meninggal: null,
@@ -115,7 +109,7 @@ export default (state = initialState, action) => {
         if (x.fid === fid) {
           selectedData.fid = x.fid;
           selectedData.kodeProvinsi = x.kodeProvinsi;
-          selectedData.provinsi = x.provinsi;
+          selectedData.name = x.name;
           selectedData.positif = x.positif;
           selectedData.sembuh = x.sembuh;
           selectedData.meninggal = x.meninggal;

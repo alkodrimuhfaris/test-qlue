@@ -4,6 +4,8 @@ import {useHistory} from 'react-router-dom';
 import useQuery from '../Hooks/useQuery';
 import actions from '../../redux/actions';
 import TableChart from './TableChart';
+import Lower from './ChartComponent/Lower';
+import Upper from './ChartComponent/Upper';
 
 export default function Chart() {
   const dispatch = useDispatch();
@@ -80,10 +82,12 @@ export default function Chart() {
           <TableChart />
         </div>
         <div className="cov-chart">
-          <div className="row no-gutters">
-            <div className="col-12 indo-chart">this is indonesia table</div>
-            <div className="col-12 province-chart">
-              this is certain region table
+          <div className="cov-chart-wrap">
+            <div className="indo-chart">
+              <Upper />
+            </div>
+            <div className="province-chart">
+              <Lower />
             </div>
           </div>
         </div>
