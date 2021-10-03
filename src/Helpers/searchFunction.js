@@ -1,27 +1,27 @@
 const searchFunc = {
-  searchFunction: (data = [], searchVal = '') => {
+  searchFunction: ({data = [], searchVal = '', fieldSearch = 'name'}) => {
     const modData = data.map((x) => ({...x}));
-    console.log(modData);
     const searchResult = [];
     if (searchVal || searchVal !== '') {
       modData.forEach((x) => {
-        const {name} = x;
+        const name = x[fieldSearch];
         const val = searchFunc.deepSearch(name, searchVal);
         if (val) {
           const newData = {
             ...x,
-            name: val,
           };
+          newData[fieldSearch] = val;
           searchResult.push(newData);
         }
       });
       return searchResult;
     }
     return modData.map((x) => {
-      const {name} = x;
+      const name = x[fieldSearch];
+      const newData = {...x};
+      newData[fieldSearch] = `<p>${name}</p>`;
       return {
-        ...x,
-        name: `<p>${name}</p>`,
+        ...newData,
       };
     });
   },
@@ -30,7 +30,6 @@ const searchFunc = {
     const nameAr = name.split('');
     const shouldBold = [];
     if (searchArr.length > nameAr.length) {
-      console.log('this is too long');
       return null;
     }
     for (let key = 0; key < nameAr.length; key++) {
@@ -72,12 +71,10 @@ const searchFunc = {
     if (el.toLowerCase() === searchArr[0].toLowerCase()) {
       for (let keyname = 0; keyname < searchArr.length; keyname++) {
         const searchArEl = searchArr[keyname];
-        console.log('searchArEl');
         if (nameAr.length < key + searchArr.length) {
           break;
         }
         if (searchArEl.toLowerCase() !== nameAr[key + keyname].toLowerCase()) {
-          console.log(keyname);
           break;
         } else if (keyname === searchArr.length - 1) {
           bold.start = key;

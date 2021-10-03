@@ -4,9 +4,13 @@ import ErrorHandling from '../Layout/ErrorHandling';
 import TableBody from './TableBody';
 import TableHead from './TableHead';
 
-export default function ContentTable() {
-  const {data, success, pending, error} = useSelector((state) => state.table);
-
+export default function ChartTable() {
+  const {
+    showData: data,
+    success,
+    pending,
+    error,
+  } = useSelector((state) => state.chart);
   return (
     <div className="table-container">
       <div className="table-inside">

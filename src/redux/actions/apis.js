@@ -16,4 +16,32 @@ export default {
     type: 'TABLE_PAGINATION',
     payload,
   }),
+  chartCovid: () => ({
+    type: 'COVID_DATA',
+    payload: axios
+      .create({baseURL: 'https://api.kawalcorona.com/indonesia'})
+      .get(`/provinsi`),
+  }),
+  selectChart: (payload) => ({
+    type: 'SELECT_CHART',
+    payload,
+  }),
+  getIndoData: () => ({
+    type: 'COVID_DATA_INDO',
+    payload: axios
+      .create({baseURL: 'https://api.kawalcorona.com/indonesia'})
+      .get(`/`),
+  }),
+  provinceSearch: (payload) => ({
+    type: 'CHART_SEARCH',
+    payload,
+  }),
+  provinceChangePage: (payload) => ({
+    type: 'CHART_CHANGE_PAGE',
+    payload,
+  }),
+  provinceChangeDataPage: (payload) => ({
+    type: 'CHART_CHANGE_DATA_PER_PAGE',
+    payload,
+  }),
 };

@@ -37,7 +37,11 @@ export default (state = initialState, action) => {
     case 'GET_DATA_RICK_FULFILLED': {
       const {info, results} = action.payload.data;
       const {pages: maxPage, count} = info;
-      const data = searchFunction(results, state.search);
+      const data = searchFunction({
+        data: results,
+        searchVal: state.search,
+        fieldSearch: 'name',
+      });
 
       return {
         ...state,

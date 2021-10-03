@@ -15,7 +15,7 @@ export default (
   const number_string = price ? price.toString() : '0';
   const split = number_string.split('.');
   if (!Number(split[0]) || (split[1] && !Number(split[1]))) {
-    let result = 'Rp 0,';
+    let result = '0';
     if (useComma) {
       for (let i = 0; i < numberBehindComma; i++) {
         result += '0';
@@ -40,7 +40,11 @@ export default (
   }
 
   currency = useComma ? `${currency},${comma}` : `${currency}`;
-  currency = !prefix ? currency : currency ? `${prefix}${currency}` : '';
+  currency = !prefix
+    ? currency
+    : currency && prefix
+    ? `${prefix}${currency}`
+    : '';
   currency = negative ? `-${currency}` : currency;
   return currency;
 };

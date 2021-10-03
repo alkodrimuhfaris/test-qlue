@@ -1,18 +1,22 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import actions from '../../redux/actions';
+import {useLocation} from 'react-router-dom';
+import {getRoute} from '../Hooks/useConfigRoute';
 import SearchInput from './SearchInput';
 
 export default function TopNav({hover}) {
-  const {search} = useSelector((state) => state.table);
-  const dispatch = useDispatch();
+  const location = useLocation();
+  const {pathname} = location;
+  const route = getRoute(pathname);
   return (
     <div className={`top-nav ${hover ? 'hover' : ''}`}>
-      <div className="container h-100">
+      <div className="container d-flex h-100">
         <SearchInput
-          search={search}
-          setSearch={(e) => dispatch(actions.api.rickSearch(e.target.value))}
+          search={route.searchVal}
+          setSearch={(e) => route.searchFunc(e.target.value)}
         />
+        <div className="title">
+          <span>{route.contentTitle}</span>
+        </div>
       </div>
     </div>
   );

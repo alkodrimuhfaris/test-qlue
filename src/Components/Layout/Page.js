@@ -1,13 +1,10 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom';
 import paginationFunction from '../../Helpers/paginationEngine';
 import TriangleIcon from '../ComponentLayout/TriangleIcon';
+import PaginationBtn, {Ellipsis} from './PaginationBtn';
 
-export default function Page() {
-  const history = useHistory();
+export default function Page({currentPage, search, maxPage}) {
   const [pages, setPages] = React.useState([1, 2, 3, 4, 5]);
-  const {currentPage, search, maxPage} = useSelector((state) => state.table);
   const [prevElipsis, setPrevElipsis] = React.useState(false);
   const [nextElipsis, setNextElipsis] = React.useState(false);
 
@@ -23,90 +20,37 @@ export default function Page() {
 
   return (
     <section className="pagination d-flex align-items-center justify-content-center">
-      <span className={currentPage === 1 ? 'disable' : ''}>
-        <button
-          disabled={currentPage === 1}
-          type="button"
-          className="pagination-item"
-          onClick={() =>
-            history.push(
-              search
-                ? {
-                    search: `?page=${currentPage - 1}&search=${search}`,
-                  }
-                : {
-                    search: `?page=${currentPage - 1}`,
-                  },
-            )
-          }
-        >
-          <span>
-            <TriangleIcon deg={270} />
-          </span>
-        </button>
-      </span>
+      <PaginationBtn
+        disabledCondition={currentPage === 1}
+        page={currentPage - 1}
+        search={search}
+      >
+        <TriangleIcon deg={270} />
+      </PaginationBtn>
 
-      {!prevElipsis ? null : (
-        <span className="disable">
-          <button type="button" disabled className="pagination-item">
-            <span>...</span>
-          </button>
-        </span>
-      )}
+      {!prevElipsis ? null : <Ellipsis />}
 
       {pages.map((val, idx) => (
-        <span key={idx} className={currentPage === val ? 'current' : ''}>
-          <button
-            disabled={currentPage === val}
-            type="button"
-            className="pagination-item"
-            onClick={() =>
-              history.push(
-                search
-                  ? {
-                      search: `?page=${val}&search=${search}`,
-                    }
-                  : {
-                      search: `?page=${val}`,
-                    },
-              )
-            }
-          >
-            <span>{val}</span>
-          </button>
-        </span>
+        <PaginationBtn
+          key={idx}
+          current
+          currentCondition={currentPage === val}
+          page={val}
+          search={search}
+        >
+          <span>{val}</span>
+        </PaginationBtn>
       ))}
 
-      {!nextElipsis ? null : (
-        <span className="disable">
-          <button type="button" disabled className="pagination-item">
-            <span>...</span>
-          </button>
-        </span>
-      )}
+      {!nextElipsis ? null : <Ellipsis />}
 
-      <span className={currentPage === maxPage ? 'disable' : ''}>
-        <button
-          disabled={currentPage === maxPage}
-          type="button"
-          className="pagination-item"
-          onClick={() =>
-            history.push(
-              search
-                ? {
-                    search: `?page=${currentPage + 1}&search=${search}`,
-                  }
-                : {
-                    search: `?page=${currentPage + 1}`,
-                  },
-            )
-          }
-        >
-          <span>
-            <TriangleIcon deg={90} />
-          </span>
-        </button>
-      </span>
+      <PaginationBtn
+        disabledCondition={currentPage === maxPage}
+        page={currentPage + 1}
+        search={search}
+      >
+        <TriangleIcon deg={90} />
+      </PaginationBtn>
     </section>
   );
 }
