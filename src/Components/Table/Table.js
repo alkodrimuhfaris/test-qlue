@@ -1,18 +1,18 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import useQuery from "../Hooks/useQuery";
-import actions from "../../redux/actions";
-import Pagination from "../Layout/Pagination";
-import ContentTable from "./ContentTable";
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+import useQuery from '../Hooks/useQuery';
+import actions from '../../redux/actions';
+import Pagination from '../Layout/Pagination';
+import ContentTable from './ContentTable';
 
 export default function Table() {
   const dispatch = useDispatch();
   const history = useHistory();
   const query = useQuery();
-  const querySearch = query.get("search");
-  const queryPage = query.get("page");
-  const [search, setSearch] = React.useState("");
+  const querySearch = query.get('search');
+  const queryPage = query.get('page');
+  const [search, setSearch] = React.useState('');
   const {
     maxPage,
     currentPage,
@@ -21,12 +21,12 @@ export default function Table() {
 
   React.useEffect(() => {
     if (search !== querySearch) {
-      if (querySearch || querySearch === "") {
+      if (querySearch || querySearch === '') {
         setSearch(querySearch);
       }
     }
     if (savedSearch !== querySearch && !savedSearch) {
-      if (querySearch || querySearch === "") {
+      if (querySearch || querySearch === '') {
         dispatch(actions.api.rickSearch(querySearch));
       }
     }
@@ -47,7 +47,7 @@ export default function Table() {
               }
             : {
                 search: `?page=${1}`,
-              }
+              },
         );
       }
       const page = queryPage || (queryPage > maxPage ? maxPage : 1);

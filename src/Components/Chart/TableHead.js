@@ -15,7 +15,7 @@ export default function TableHead() {
       <div className="col-2">
         <p className="center">Meninggal</p>
       </div>
-      <div className="col-2">
+      <div className="col-3">
         <p className="center">Aksi</p>
       </div>
     </div>

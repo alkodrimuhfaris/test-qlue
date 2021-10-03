@@ -57,8 +57,8 @@ export function getRoute(pathname) {
       contentTitle: 'Google Maps',
       route: '/map',
       Icon: BsMap,
-      searchVal: useSelector((state) => state.table.search),
-      searchFunc: (e) => dispatch(actions.api.provinceSearch(e)),
+      searchVal: useSelector((state) => state.map.search),
+      searchFunc: (e) => dispatch(actions.api.searchMap(e)),
     },
   ];
   const [selectedRouter, setSelectedRouter] = React.useState(0);

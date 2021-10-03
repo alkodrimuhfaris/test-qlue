@@ -2,6 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 export default {
+  // table
   getRickAndMorty: (page, name = '') => ({
     type: 'GET_DATA_RICK',
     payload: axios
@@ -16,6 +17,8 @@ export default {
     type: 'TABLE_PAGINATION',
     payload,
   }),
+
+  // chart
   chartCovid: () => ({
     type: 'COVID_DATA',
     payload: axios
@@ -42,6 +45,12 @@ export default {
   }),
   provinceChangeDataPage: (payload) => ({
     type: 'CHART_CHANGE_DATA_PER_PAGE',
+    payload,
+  }),
+
+  // maps
+  searchMap: (payload) => ({
+    type: 'GMAPS_SEARCH',
     payload,
   }),
 };

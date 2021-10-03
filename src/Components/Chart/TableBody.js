@@ -21,7 +21,7 @@ export default function TableBody({val, idx}) {
       <div className="col-2 d-flex align-items-center justify-content-center">
         <p className="center">{currencyFormat(meninggal, false, 0, '')}</p>
       </div>
-      <div className="col-2 d-flex align-items-center justify-content-center">
+      <div className="col-3 d-flex align-items-center justify-content-center">
         <button
           type="button"
           onClick={(e) => {
