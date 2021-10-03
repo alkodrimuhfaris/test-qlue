@@ -23,10 +23,12 @@ export default function Lower() {
   return (
     <div className="lower-chart">
       <div className="title">
-        <h1>{prov}</h1>
+        <h1>Kasus {prov}</h1>
       </div>
       <div className="content-chart">
-        <PieChart data={data} />
+        <div className="content-chart-wrapper">
+          <PieChart data={data} />
+        </div>
       </div>
     </div>
   );
