@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useQuery from '../Hooks/useQuery';
 import actions from '../../redux/actions';
+import MapAPI from './MapAPI';
 
 export default function Map() {
   const dispatch = useDispatch();
@@ -27,5 +28,9 @@ export default function Map() {
     }
   }, [savedSearch]);
 
-  return <div className="map">map</div>;
+  return (
+    <div className="map">
+      <MapAPI />
+    </div>
+  );
 }

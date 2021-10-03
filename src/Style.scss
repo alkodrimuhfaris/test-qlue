@@ -211,7 +211,7 @@ body:not(.modal-open) {
           right: 0 !important;
           width: 100%;
           // width: 32rem;
-          padding: 0.5rem 1.5rem;
+          padding: 0.5rem 2rem 0.5rem 1.5rem;
           border-radius: 300px;
           border: 2px solid #dddddd;
           outline: none !important;
@@ -239,6 +239,25 @@ body:not(.modal-open) {
         }
       }
     }
+  }
+}
+
+.suggestions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%);
+  background-color: #fff;
+  @extend .shadow;
+  height: auto;
+  z-index: 50;
+  & .suggestion {
+    padding: 0.25rem;
+    margin: 0.25rem;
+    width: calc(100% - 0.5rem);
+    border-bottom: 1px solid #888888;
+    overflow: hidden;
   }
 }
 
@@ -528,6 +547,12 @@ body:not(.modal-open) {
       border-radius: 10px;
     }
   }
+}
+
+.map {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .icon-triangle {
