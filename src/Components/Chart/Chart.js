@@ -19,10 +19,14 @@ export default function Chart() {
     currentPage,
     success,
     search: savedSearch,
+    indoData,
   } = useSelector((state) => state.chart);
 
   React.useEffect(() => {
     dispatch(actions.api.chartCovid());
+    if (!indoData.length) {
+      dispatch(actions.api.getIndoData());
+    }
   }, []);
 
   React.useEffect(() => {

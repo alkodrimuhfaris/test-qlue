@@ -20,13 +20,7 @@ const initialState = {
   totalData: 0,
   page: 1,
 
-  indoData: {
-    name: 'Indonesia',
-    positif: 4218142,
-    sembuh: 4042215,
-    meninggal: 142115,
-    dirawat: 33812,
-  },
+  indoData: [],
   selectedData: null,
 };
 
@@ -141,7 +135,8 @@ export default (state = initialState, action) => {
       };
     }
     case 'CHART_CHANGE_DATA_PER_PAGE': {
-      const dataShowed = action.payload;
+      let dataShowed = action.payload;
+      dataShowed = dataShowed === 'all' ? dataShowed : dataShowed * 1;
       const {data, totalData} = state;
       const page = 1;
       const offset = 0;
@@ -218,15 +213,24 @@ export default (state = initialState, action) => {
       };
     }
     case 'COVID_DATA_INDO_FULFILLED': {
-      const {data} = action.payload.data;
-      const {positif, sembuh, dirawat, meninggal} = data;
-      const indoData = {
-        ...data,
-        positif: positif.split(',').join('') * 1,
-        sembuh: sembuh.split(',').join('') * 1,
-        dirawat: dirawat.split(',').join('') * 1,
-        meninggal: meninggal.split(',').join('') * 1,
-      };
+      const {update} = action.payload.data;
+      const {harian} = update;
+      const newData = [];
+      harian.forEach((val) => {
+        const nD = {
+          dateString: val.key_as_string,
+          dateTS: val.key,
+          date: new Date(val.key),
+          meninggal: val.jumlah_meninggal.value,
+          meninggalKum: val.jumlah_meninggal_kum.value,
+          sembuh: val.jumlah_sembuh.value,
+          sembuhKum: val.jumlah_sembuh_kum.value,
+          positif: val.jumlah_positif.value,
+          positifKum: val.jumlah_positif_kum.value,
+        };
+        newData.push({...nD});
+        return val;
+      });
 
       return {
         ...state,
@@ -234,7 +238,7 @@ export default (state = initialState, action) => {
         pendingIndo: false,
         errorIndo: false,
 
-        indoData,
+        indoData: [...newData],
       };
     }
   }

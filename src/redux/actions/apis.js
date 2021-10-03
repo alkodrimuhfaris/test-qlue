@@ -29,8 +29,8 @@ export default {
   getIndoData: () => ({
     type: 'COVID_DATA_INDO',
     payload: axios
-      .create({baseURL: 'https://api.kawalcorona.com/indonesia'})
-      .get(`/`),
+      .create({baseURL: 'https://data.covid19.go.id/public/api'})
+      .get(`/update.json`),
   }),
   provinceSearch: (payload) => ({
     type: 'CHART_SEARCH',

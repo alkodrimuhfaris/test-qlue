@@ -270,11 +270,11 @@ body:not(.modal-open) {
         width: 7px; /* width of the entire scrollbar */
         height: 7px; /* height of the entire scrollbar */
       }
-    
+
       &::-webkit-scrollbar-track {
         background: #f6f8fb !important; /* color of the tracking area */
       }
-    
+
       &::-webkit-scrollbar-thumb {
         background-color: #ababab !important; /* color of the scroll thumb */
         border-radius: 20px; /* roundness of the scroll thumb */
@@ -476,7 +476,8 @@ body:not(.modal-open) {
   height: 100%;
   display: flex;
   flex-direction: column;
-  & .indo-chart, & .province-chart {
+  & .indo-chart,
+  & .province-chart {
     height: 50%;
     @extend .scroll-stylized;
     background-color: #fff;
@@ -486,8 +487,9 @@ body:not(.modal-open) {
   }
 }
 
-.upper-chart, .lower-chart {
-  padding: 0.25rem;
+.upper-chart,
+.lower-chart {
+  // padding: 0.25rem;
   position: relative;
   height: 100%;
   width: 100%;
@@ -496,12 +498,18 @@ body:not(.modal-open) {
   flex-direction: column;
   justify-content: center;
   & .content-chart {
-    flex-grow: 1;
     width: 100%;
+    height: 100%;
   }
   & .title {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
     & h1 {
       font-size: 1rem;
+      color: #fff;
+      padding: 0.25rem;
+      background-color: #034ea1;
       font-weight: 700;
     }
   }
