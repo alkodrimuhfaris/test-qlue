@@ -1,6 +1,6 @@
 <h1 align="center">Dashboard App for Table, Chart and Map</h1>
 
-eSea Indonesia Landing Page, intuitive and great user experience with responsive display on desktop/pc and phone/tablet
+Dashboard App with table and chart visualisation and map with places API by google, intuitive and great user experience with responsive display on desktop/pc and phone/tablet
 
 ## Built with
 [![React Native](https://img.shields.io/badge/React_Native-0.63.3-blue.svg?style=rounded-square)](https://reactnative.dev/)
@@ -20,7 +20,8 @@ eSea Indonesia Landing Page, intuitive and great user experience with responsive
 
 ## How to run the app?
 1. Go to `./public/index.html`
-2. In line `31` change the line to be ```<script src="https://maps.googleapis.com/maps/api/js?key=[YOUR-API-KEY-HERE]&libraries=places"></script>```
+2. In line `31` change the line to be
+``<script src="https://maps.googleapis.com/maps/api/js?key=[YOUR-API-KEY-HERE]&libraries=places"></script>``
 3. Open app's directory in CMD
 4. Type `yarn install`
 5. Type `yarn start`
