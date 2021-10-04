@@ -5,8 +5,8 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import {useDispatch, useSelector} from 'react-redux';
 import actions from '../../redux/actions';
-import SvgIcon from '../ComponentLayout/SvgIcon';
 import useQuery from '../Hooks/useQuery';
+import SeaarchWrapper from './SeaarchWrapper';
 
 export default function SearchMap() {
   const dispatch = useDispatch();
@@ -41,45 +41,12 @@ export default function SearchMap() {
       onSelect={handleSelect}
     >
       {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-        <div className="search-wrapper position-relative">
-          <div className="w-100 h-100 position-relative">
-            <form
-              className="search-container"
-              onSubmit={(e) => {
-                e.preventDefault();
-              }}
-            >
-              <input
-                {...getInputProps({
-                  placeholder: 'Search Place Here',
-                  className: 'search',
-                })}
-              />
-              <SvgIcon
-                className={['search-icon']}
-                src="/assets/icon/search.svg"
-              />
-            </form>
-          </div>
-          <div className="suggestions">
-            {loading && <div className="px-4">Loading...</div>}
-            {suggestions.map((suggestion) => {
-              const style = suggestion.active
-                ? {backgroundColor: '#e9f1fc', cursor: 'pointer'}
-                : {backgroundColor: '#ffffff', cursor: 'pointer'};
-              return (
-                <div
-                  {...getSuggestionItemProps(suggestion, {
-                    className: 'suggestion',
-                    style,
-                  })}
-                >
-                  <span>{suggestion.description}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <SeaarchWrapper
+          getInputProps={getInputProps}
+          suggestions={suggestions}
+          getSuggestionItemProps={getSuggestionItemProps}
+          loading={loading}
+        />
       )}
     </PlacesAutocomplete>
   );
