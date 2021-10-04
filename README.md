@@ -31,7 +31,7 @@ Dashboard App with table and chart visualisation and map with places API by goog
 
 ## Documentation
 1. `/table`: route for rick and morty table visualisation from [Rick and Morty API](https://rickandmortyapi.com/api)
-2. `/chart`: route for COVID-19 table, and chart visualisation from Indonesian COVID-19 API with [![amCharts v4](https://img.shields.io/badge/amCharts-v4-blue)](https://www.amcharts.com/docs/v4/) [Kawal Indonesia API](https://api.kawalcorona.com/indonesia) and [Data Covid](https://data.covid19.go.id/public/api)
+2. `/chart`: route for COVID-19 table, and chart visualisation from Indonesian COVID-19 API from [Kawal Indonesia API](https://api.kawalcorona.com/indonesia) and [Data Covid](https://data.covid19.go.id/public/api) with [![amCharts v4](https://img.shields.io/badge/amCharts-v4-blue)](https://www.amcharts.com/docs/v4/)
 3. `/map`: route for google map from Google Places API and Maps for JavaScript API
 
 ## Screenshot
