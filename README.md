@@ -38,3 +38,12 @@ Dashboard App with table and chart visualisation and map with places API by goog
 <img src='https://drive.google.com/uc?id=1Dcgj0ei416a3aoRLkvaT_g5bLa8K7hls' width='25%'><img src='https://drive.google.com/uc?id=1GsBAZJferlEc9qi-XMGwSacZmEBPVP6V' width='25%'>
 
 <img src='https://drive.google.com/uc?id=10cyZWPsY00b8uMSN7WsEQoTbmL9evotx' width='25%'>
+
+
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+
+
