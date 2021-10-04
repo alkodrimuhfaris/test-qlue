@@ -3,7 +3,6 @@
 Dashboard App with table and chart visualisation and map with places API by google, intuitive and great user experience with responsive display on desktop/pc and phone/tablet
 
 ## Built with
-[![React Native](https://img.shields.io/badge/React_Native-0.63.3-blue.svg?style=rounded-square)](https://reactnative.dev/)
 [![React Router Dom](https://img.shields.io/badge/React%20Router%20Dom-v5.2.0-orange)](https://reactrouter.com/)
 [![Redux](https://img.shields.io/badge/Redux-v4.0.5-purple.svg?style=rounded-square)](https://redux.js.org/)
 [![Reactstrap](https://img.shields.io/badge/Reactstrap-v8.5.1-orange)](https://reactstrap.github.io/)
