@@ -21,9 +21,7 @@ export default {
   // chart
   chartCovid: () => ({
     type: 'COVID_DATA',
-    payload: axios
-      .create({baseURL: 'https://api.kawalcorona.com/indonesia'})
-      .get(`/provinsi`),
+    payload: axios.get(`https://api.kawalcorona.com/indonesia/provinsi`),
   }),
   selectChart: (payload) => ({
     type: 'SELECT_CHART',

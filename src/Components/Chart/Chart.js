@@ -18,12 +18,16 @@ export default function Chart() {
     maxPage,
     currentPage,
     success,
+    pending,
+    error,
     search: savedSearch,
     indoData,
   } = useSelector((state) => state.chart);
 
   React.useEffect(() => {
-    dispatch(actions.api.chartCovid());
+    if (!success && !pending && !error) {
+      dispatch(actions.api.chartCovid());
+    }
     if (!indoData.length) {
       dispatch(actions.api.getIndoData());
     }
