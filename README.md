@@ -20,8 +20,8 @@ Dashboard App with table and chart visualisation and map with places API by goog
 
 ## How to run the app?
 1. Go to `./public/index.html`
-2. In line `31` change the line to be
-``<script src="https://maps.googleapis.com/maps/api/js?key=[YOUR-API-KEY-HERE]&libraries=places"></script>``
+2. In line `31` change the line to be</br>
+``<script src="https://maps.googleapis.com/maps/api/js?key=[YOUR-API-KEY-HERE]&libraries=places"></script>``</br>
 3. Open app's directory in CMD
 4. Type `yarn install`
 5. Type `yarn start`
