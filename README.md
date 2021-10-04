@@ -24,9 +24,10 @@ Dashboard App with table and chart visualisation and map with places API by goog
 <script src="https://maps.googleapis.com/maps/api/js?key=[YOUR-API-KEY-HERE]&libraries=places"></script>
 
 ```
-3. Open app's directory in CMD
-4. Type `yarn install`
-5. Type `yarn start`
+3. Add your API key to `REACT_APP_GOOGLE_API_KEY` in your `.env` file
+4. Open app's directory in CMD
+5. Type `yarn install`
+6. Type `yarn start`
 
 ## Documentation
 1. `/table`: route for rick and morty table visualisation from rick and morty API (`https://rickandmortyapi.com/api`)
