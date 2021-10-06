@@ -7,19 +7,23 @@ import Table from './Components/Table/Table';
 import Chart from './Components/Chart/Chart';
 import store from './redux/store';
 import './Style.scss';
+import NotFound from './Components/Layout/NotFound';
+import Login from './Components/Auth/Login';
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Layout>
-          <Switch>
+        <Switch>
+          <Route path="/login" exact component={Login} />
+          <Layout>
             <Route path="/map" exact component={Map} />
             <Route path="/table" exact component={Table} />
             <Route path="/chart" component={Chart} />
-            <Redirect from="/*" to="/table" exact />
-          </Switch>
-        </Layout>
+            <Redirect from="/" to="/table" exact />
+            <Route component={NotFound} />
+          </Layout>
+        </Switch>
       </BrowserRouter>
     </Provider>
   );

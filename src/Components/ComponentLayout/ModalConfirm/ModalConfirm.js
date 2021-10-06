@@ -47,7 +47,7 @@ export default function ModalConfirm({
         </div>
         <div className="d-flex my-3 justify-content-around">
           <Button
-            color="pap-main"
+            color={useOneBtn && icon === 'error' ? 'danger' : 'pap-main'}
             outline
             onClick={(e) => doConfirm(e)}
             className="rounded-pill px-4 border-0"
