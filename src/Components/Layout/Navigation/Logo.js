@@ -9,14 +9,12 @@ export default function Logo({hover, setHoverLogo}) {
       {hover ? (
         <img
           onMouseEnter={sm ? null : () => setHoverLogo(true)}
-          // onMouseLeave={() => setHoverLogo(false)}
           className={`logo ${hover ? 'hover' : ''}`}
           src="/assets/logo/logo.png"
           alt="logo"
         />
       ) : (
         <img
-          // onMouseLeave={() => setHoverLogo(false)}
           onMouseEnter={sm ? null : () => setHoverLogo(true)}
           className={`logo ${hover ? 'hover' : ''}`}
           src="/assets/logo/logo-small.png"
