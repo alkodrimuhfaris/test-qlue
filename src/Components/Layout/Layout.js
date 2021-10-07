@@ -1,6 +1,6 @@
 import React from 'react';
-import Content from './Content';
-import Navigation from './Navigation';
+import Content from './Content/Content';
+import Navigation from './Navigation/Navigation';
 
 export default function Layout(props) {
   const [hover, setHover] = React.useState(false);

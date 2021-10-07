@@ -1,5 +1,5 @@
 import React from 'react';
-import SvgIcon from '../ComponentLayout/SvgIcon';
+import SvgIcon from '../../ComponentLayout/SvgIcon';
 
 export default function SearchInput({search = '', setSearch = (val) => val}) {
   return (

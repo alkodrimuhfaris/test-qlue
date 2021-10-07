@@ -1,6 +1,6 @@
 import React from 'react';
-import paginationFunction from '../../Helpers/paginationEngine';
-import TriangleIcon from '../ComponentLayout/TriangleIcon';
+import paginationFunction from '../../../Helpers/paginationEngine';
+import TriangleIcon from '../../ComponentLayout/TriangleIcon';
 import PaginationBtn, {Ellipsis} from './PaginationBtn';
 
 export default function Page({currentPage, search, maxPage}) {

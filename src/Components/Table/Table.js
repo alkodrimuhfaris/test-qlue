@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import useQuery from '../Hooks/useQuery';
 import actions from '../../redux/actions';
-import Pagination from '../Layout/Pagination';
+import Pagination from '../Layout/Pagination/Pagination';
 import ContentTable from './ContentTable';
 
 export default function Table() {

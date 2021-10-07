@@ -40,10 +40,10 @@ export default function ModalConfirm({
           </div>
         </div>
         <div className="text-center my-3">
-          <text className="font-weight-bold h5">{title}</text>
+          <span className="font-weight-bold h5">{title}</span>
         </div>
         <div className="text-center">
-          <text>{content}</text>
+          <span>{content}</span>
         </div>
         <div className="d-flex my-3 justify-content-around">
           <Button
@@ -52,7 +52,7 @@ export default function ModalConfirm({
             onClick={(e) => doConfirm(e)}
             className="rounded-pill px-4 border-0"
           >
-            <text className="border-bottom">{confirmTxt}</text>
+            <span className="border-bottom">{confirmTxt}</span>
           </Button>
           {useOneBtn ? null : (
             <Button
@@ -61,7 +61,7 @@ export default function ModalConfirm({
               onClick={(e) => doCancel(e)}
               className="rounded-pill px-4 border-0"
             >
-              <text className="border-bottom">{closeTxt}</text>
+              <span className="border-bottom">{closeTxt}</span>
             </Button>
           )}
         </div>

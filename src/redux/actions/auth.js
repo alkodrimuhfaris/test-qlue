@@ -11,6 +11,10 @@ export default {
     type: 'LOGOUT',
     payload: null,
   }),
+  setInitial: () => ({
+    type: 'SET_INITIAL_STATE',
+    payload: null,
+  }),
   clearState: () => ({
     type: 'CLEAR_STATE',
     payload: null,

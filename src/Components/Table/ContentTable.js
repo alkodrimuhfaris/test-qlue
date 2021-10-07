@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import ErrorHandling from '../Layout/ErrorHandling';
+import ErrorHandling from '../Layout/Content/ErrorHandling';
 import TableBody from './TableBody';
 import TableHead from './TableHead';
 

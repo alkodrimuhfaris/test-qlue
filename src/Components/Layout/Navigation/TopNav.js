@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocation} from 'react-router-dom';
-import {getRoute} from '../Hooks/useConfigRoute';
-import SearchMap from '../Map/SearchMap';
+import {getRoute} from '../../Hooks/useConfigRoute';
+import SearchMap from '../../Map/SearchMap';
 import SearchInput from './SearchInput';
 
 export default function TopNav({hover}) {

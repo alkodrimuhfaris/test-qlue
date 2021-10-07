@@ -1,8 +1,8 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import actions from '../../redux/actions';
-import Page from '../Layout/Page';
-import ShowData from '../Layout/ShowData';
+import Page from '../Layout/Pagination/Page';
+import ShowData from '../Layout/Pagination/ShowData';
 
 export default function PaginationChart() {
   const {page, search, maxPage, dataShowed} = useSelector(

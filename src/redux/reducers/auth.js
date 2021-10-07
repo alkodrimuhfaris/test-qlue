@@ -2,6 +2,7 @@ const initialState = {
   success: false,
   pending: false,
   error: false,
+  isSessionEnd: false,
   message: '',
 
   isLoggedin: false,
@@ -16,6 +17,7 @@ const initialState = {
   token: '',
   refreshToken: '',
   expire: 0,
+  expireTZ: 0,
 };
 
 export default (state = initialState, action) => {
@@ -48,7 +50,7 @@ export default (state = initialState, action) => {
       const {profile, token: tknCont} = action.payload.data;
 
       const {
-        expire_in: expire,
+        expires_in: expire,
         access_token: token,
         refresh_token: refreshToken,
       } = tknCont;
@@ -75,6 +77,7 @@ export default (state = initialState, action) => {
         token,
         refreshToken,
         expire,
+        expireTZ: Date.now() + expire,
       };
 
       Object.entries(authObj).forEach(([key, val], _idx) => {
@@ -91,8 +94,81 @@ export default (state = initialState, action) => {
       };
     }
     case 'LOGOUT': {
+      const {
+        isLoggedin,
+
+        id,
+        email,
+        name,
+        phone,
+        avatar,
+        isResident,
+
+        token,
+        refreshToken,
+        expire,
+        expireTZ,
+      } = state;
+
+      const authObj = {
+        isLoggedin,
+
+        id,
+        email,
+        name,
+        phone,
+        avatar,
+        isResident,
+
+        token,
+        refreshToken,
+        expire,
+        expireTZ,
+      };
+
+      Object.keys(authObj).forEach((key, _idx) => {
+        localStorage.removeItem(key);
+        return key;
+      });
+
       return {
-        initialState,
+        ...initialState,
+        ...action.payload,
+      };
+    }
+
+    case 'SET_INITIAL_STATE': {
+      const authObj = {
+        isLoggedin: localStorage.getItem('isLoggedin') || '',
+
+        id: localStorage.getItem('id') || '',
+        email: localStorage.getItem('email') || '',
+        name: localStorage.getItem('name') || '',
+        phone: localStorage.getItem('phone') || '',
+        avatar: localStorage.getItem('avatar') || '',
+        isResident: localStorage.getItem('isResident') === 'true',
+
+        token: localStorage.getItem('token') || '',
+        refreshToken: localStorage.getItem('refreshToken') || '',
+        expire: localStorage.getItem('expire')
+          ? localStorage.getItem('expire') * 1
+          : 0,
+        expireTZ: localStorage.getItem('expireTZ')
+          ? localStorage.getItem('expireTZ') * 1
+          : 0,
+      };
+
+      const {expireTZ} = authObj;
+      const currTime = Date.now();
+      if (currTime > expireTZ) {
+        return {
+          ...initialState,
+        };
+      }
+
+      return {
+        ...state,
+        ...authObj,
       };
     }
     case 'CLEAR_STATE': {
@@ -102,6 +178,8 @@ export default (state = initialState, action) => {
         success: false,
         pending: false,
         error: false,
+        isSessionEnd: false,
+        message: '',
       };
     }
   }
