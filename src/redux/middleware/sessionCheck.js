@@ -3,15 +3,16 @@ const sessionCheck = (store) => (next) => (action) => {
   const {isLoggedIn, expireTZ} = store.getState((state) => state.auth);
   if (isLoggedIn) {
     if (currTime > expireTZ) {
-      next(
-        store.dispatch({
-          type: 'LOGOUT',
-          payload: {
-            isSessionEnd: false,
-            message: 'Session has ended',
-          },
-        }),
-      );
+      // next(
+      //   store.dispatch({
+      //     type: 'LOGOUT',
+      //     payload: {
+      //       isSessionEnd: false,
+      //       message: 'Session has ended',
+      //     },
+      //   }),
+      // );
+      next(action);
     } else {
       next(action);
     }

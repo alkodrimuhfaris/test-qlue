@@ -2,12 +2,13 @@ import React from 'react';
 import {useLocation} from 'react-router-dom';
 import MenuOption from './MenuOption';
 import useWindowDimensions from '../../Hooks/useWindowDimension';
-import useConfig from '../../Hooks/useConfigRoute';
+import useConfig from '../../Config/useConfig';
 import ProfileWrapper from './ProfileWrapper';
 
 export default function Menu({
   startHover = () => {},
   endHover = () => {},
+  hover,
   open,
 }) {
   const location = useLocation();
@@ -20,7 +21,7 @@ export default function Menu({
     <ul
       onMouseEnter={!sm ? startHover : null}
       onMouseLeave={!sm ? endHover : null}
-      className={`menu-container ${open ? '' : 'open'}`}
+      className={`menu-container ${hover ? 'hover' : ''} ${open ? '' : 'open'}`}
     >
       <li className="profile-wrapper">
         <ProfileWrapper endHover={endHover} />

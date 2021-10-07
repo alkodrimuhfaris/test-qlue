@@ -5,10 +5,12 @@ import actions from '../../redux/actions';
 import FormLogin from './FormLogin';
 import ModalConfirm from '../ComponentLayout/ModalConfirm/ModalConfirm';
 
-export default function Login({location = {state: ''}}) {
+export default function Login({
+  location = {state: {from: '', forbidden: false}},
+}) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const {isLoggedin, pending, succes, error, message} = useSelector(
+  const {isLoggedIn, pending, succes, error, message} = useSelector(
     (state) => state.auth,
   );
   const [propsNotif, setPropsNotif] = React.useState({});
@@ -33,12 +35,33 @@ export default function Login({location = {state: ''}}) {
 
   React.useEffect(() => {
     const {state} = location;
-    const path = state ? state.from.pathname : '/admin';
-    if (isLoggedin) {
-      console.log(path);
+    const path = state
+      ? state.from
+        ? state.from.pathname
+        : '/table'
+      : '/table';
+    if (isLoggedIn) {
       history.push(path);
     }
-  }, [isLoggedin, succes, error]);
+  }, [isLoggedIn, succes, error]);
+
+  React.useEffect(() => {
+    const forbiden = location.state ? location.state.forbidden : false;
+    if (forbiden) {
+      setPropsNotif({
+        title: 'Unauthorize',
+        icon: 'error',
+        content: 'Log In First',
+        confirmTxt: 'close',
+        useOneBtn: true,
+        confirm: () => {
+          location.forbidden = false;
+          setOpenNotif(false);
+        },
+      });
+      setOpenNotif(true);
+    }
+  }, [location]);
 
   const login = (value) => {
     dispatch(actions.auth.login(value));

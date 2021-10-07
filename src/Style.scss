@@ -76,11 +76,16 @@ body:not(.modal-open) {
   position: relative;
   & .logo {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 1rem;
+    left: 2.2rem;
     height: 3rem;
     width: auto;
     z-index: 10;
+    transition: 0.3s ease;
+    &.hover {
+      left: 8rem;
+      transform: translateX(-50%);
+    }
   }
   & .menu-container {
     @extend .shadow;
@@ -97,7 +102,9 @@ body:not(.modal-open) {
     position: absolute;
     height: 100vh;
     & .profile-wrapper {
+      padding-bottom: 2rem;
       margin-bottom: 2rem;
+      border-bottom: 2px solid #e9f1fc;
       & .profile-pic {
         transition: 0.3s ease;
         width: 3rem;
@@ -155,7 +162,7 @@ body:not(.modal-open) {
         background-color: #034ea1;
         z-index: 10;
       }
-      &:hover {
+      &:hover, &.hover {
         & .hover-stylized {
           width: 100%;
           transition: 0.3s ease;
@@ -184,7 +191,7 @@ body:not(.modal-open) {
         }
       }
     }
-    &:hover {
+    &:hover, &.hover {
       & .menu-option {
         & .text-menu {
           width: 10rem;
@@ -663,14 +670,29 @@ body:not(.modal-open) {
   }
 }
 
+.not-found-wrapper {
+  display: flex;
+  padding: 3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .not-found {
   display: flex;
-  height: 100%;
+  width: 40%;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 10px 10px 30px #e9f1fc;
+  // background-color: #fff;
+  min-width: 300px;
+  height: auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   & h1 {
     font-weight: 700;
+    text-align: center;
     color: #034ea1;
   }
   & span {
@@ -810,7 +832,9 @@ body:not(.modal-open) {
       z-index: 70;
       transition: 0.3s ease;
       & .profile-wrapper {
+        padding-bottom: 2rem;
         margin-bottom: 2rem;
+        border-bottom: 2px solid #e9f1fc;
         & .profile-pic {
           transition: 0.3s ease;
           width: 4.5rem;

@@ -5,7 +5,7 @@ const initialState = {
   isSessionEnd: false,
   message: '',
 
-  isLoggedin: false,
+  isLoggedIn: false,
 
   id: '',
   email: '',
@@ -65,7 +65,7 @@ export default (state = initialState, action) => {
       } = profile;
 
       const authObj = {
-        isLoggedin: true,
+        isLoggedIn: true,
 
         id,
         email,
@@ -95,7 +95,7 @@ export default (state = initialState, action) => {
     }
     case 'LOGOUT': {
       const {
-        isLoggedin,
+        isLoggedIn,
 
         id,
         email,
@@ -111,7 +111,7 @@ export default (state = initialState, action) => {
       } = state;
 
       const authObj = {
-        isLoggedin,
+        isLoggedIn,
 
         id,
         email,
@@ -133,13 +133,14 @@ export default (state = initialState, action) => {
 
       return {
         ...initialState,
+        isLoggedIn: false,
         ...action.payload,
       };
     }
 
     case 'SET_INITIAL_STATE': {
       const authObj = {
-        isLoggedin: localStorage.getItem('isLoggedin') || '',
+        isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
 
         id: localStorage.getItem('id') || '',
         email: localStorage.getItem('email') || '',
@@ -158,13 +159,13 @@ export default (state = initialState, action) => {
           : 0,
       };
 
-      const {expireTZ} = authObj;
-      const currTime = Date.now();
-      if (currTime > expireTZ) {
-        return {
-          ...initialState,
-        };
-      }
+      // const {expireTZ} = authObj;
+      // const currTime = Date.now();
+      // if (currTime > expireTZ) {
+      //   return {
+      //     ...initialState,
+      //   };
+      // }
 
       return {
         ...state,

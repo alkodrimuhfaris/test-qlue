@@ -12,7 +12,7 @@ export default function Table() {
   const query = useQuery();
   const querySearch = query.get('search');
   const queryPage = query.get('page');
-  const [search, setSearch] = React.useState('');
+  // const [search, setSearch] = React.useState('');
   const {
     maxPage,
     currentPage,
@@ -20,11 +20,11 @@ export default function Table() {
   } = useSelector((state) => state.table);
 
   React.useEffect(() => {
-    if (search !== querySearch) {
-      if (querySearch || querySearch === '') {
-        setSearch(querySearch);
-      }
-    }
+    // if (search !== querySearch) {
+    //   if (querySearch || querySearch === '') {
+    //     setSearch(querySearch);
+    //   }
+    // }
     if (savedSearch !== querySearch && !savedSearch) {
       if (querySearch || querySearch === '') {
         dispatch(actions.api.rickSearch(querySearch));
@@ -55,12 +55,12 @@ export default function Table() {
     }
   }, [queryPage]);
 
-  React.useEffect(() => {
-    dispatch(actions.api.getRickAndMorty(currentPage * 1, search));
-  }, [search]);
+  // React.useEffect(() => {
+  //   dispatch(actions.api.getRickAndMorty(currentPage * 1, search));
+  // }, [search]);
 
   React.useEffect(() => {
-    dispatch(actions.api.getRickAndMorty(currentPage * 1, search));
+    dispatch(actions.api.getRickAndMorty(currentPage * 1, savedSearch));
   }, [currentPage]);
 
   React.useEffect(() => {
